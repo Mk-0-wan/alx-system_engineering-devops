@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir my_dir
+chmod u=rwx
+chmod g=rx
+chmod o=x
+

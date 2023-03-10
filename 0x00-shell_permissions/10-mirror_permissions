@@ -1,0 +1,8 @@
+#!/bin/bash
+touch ./hello
+touch ./olleh
+chmod ug=rw hello
+chmod o=r hello
+chmod ug=olleh
+chmod o=olleh
+

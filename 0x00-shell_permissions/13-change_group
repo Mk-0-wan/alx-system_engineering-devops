@@ -1,0 +1,4 @@
+#!/bin/bash
+touch ./hello
+su chgrp school hello
+

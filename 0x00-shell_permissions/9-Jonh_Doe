@@ -1,0 +1,6 @@
+#!/bin/bash
+touch ./hello
+chmod u+x
+chmod g=x
+chmod o=wx
+
