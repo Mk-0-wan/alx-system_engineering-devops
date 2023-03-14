@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -At | awk 'NF=10 {print;}'
+ls -At | head -n 10
