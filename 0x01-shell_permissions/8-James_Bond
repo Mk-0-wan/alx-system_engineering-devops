@@ -1,0 +1,2 @@
+#!/bin/bash
+touch ./hello |chmod ug-rwx hello | chmod o+=rwx hello

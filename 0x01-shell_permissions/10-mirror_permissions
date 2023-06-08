@@ -1,0 +1,2 @@
+#!/bin/bash
+touch ./hello ./olleh | chmod u=wx ./hello ./olleh |chmod g=rx ./hello ./olleh | chmod o=r ./hello ./olleh
