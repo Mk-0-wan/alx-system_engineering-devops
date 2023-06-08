@@ -1,2 +1,2 @@
 #!/bin/bash
-chgrp --from=guillmaume betty
+chgrp --from=guillmaume betty hello
