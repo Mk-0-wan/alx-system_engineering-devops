@@ -1,0 +1,2 @@
+#!/bin/bash
+echo power=$((BREATH ** LOVE)) | cut -d"=" -f2
