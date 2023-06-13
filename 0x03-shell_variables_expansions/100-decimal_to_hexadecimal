@@ -1,2 +1,2 @@
 #!/bin/bash
-echo base16=$(printf "%X" "$NUM")
+echo base16=$(printf "%X" "$DECIMAL")

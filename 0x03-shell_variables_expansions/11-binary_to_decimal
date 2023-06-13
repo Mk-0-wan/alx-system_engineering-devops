@@ -1,2 +1,2 @@
 #!/bin/bash
-echo bases=$((2#BINARY)) | cut -d"=" -f2
+echo bases=$((2#$BINARY)) | cut -d"=" -f2

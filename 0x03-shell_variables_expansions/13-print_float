@@ -1,2 +1,2 @@
 #!/bin/bash
-echo roundoff=$(printf "%.*f" 2 "$NUM")
+echo roundoff=$(printf "%.*f" 2 "$NUM") | cut -d"=" -f2
