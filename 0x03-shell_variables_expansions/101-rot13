@@ -1,2 +1,2 @@
 #!/bin/bash
-read -r line "$line" | tr "A-Za-z" "N-ZA-Mn-za-m"
+echo read -r line "$line" | tr "A-Za-z" "N-ZA-Mn-za-m"
