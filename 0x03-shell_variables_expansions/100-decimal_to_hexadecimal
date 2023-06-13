@@ -1,2 +1,2 @@
 #!/bin/bash
-echo base16=$(printf "%X" "$DECIMAL")
+echo base16=$(printf "%X" "$DECIMAL") | cut -d"=" -f2
