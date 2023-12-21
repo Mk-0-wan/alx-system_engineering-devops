@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# reading streams
+while read -r reads;
+do
+	echo "$reads" | cut -d":" -f1,3,6
+done < /etc/passwd
