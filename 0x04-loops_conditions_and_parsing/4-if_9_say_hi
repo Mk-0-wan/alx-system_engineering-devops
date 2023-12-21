@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Using if condition to control the flow
 i=0
-while [[ $i -ne 10 ]]; do
+while [[ $i -le 10 ]]; do
+	echo "Best School"
 	if [[ $i -eq 9 ]]; then
 		echo -e "Best School\nHi"
 	fi
-	echo "Best School"
 	((i++))
 done
