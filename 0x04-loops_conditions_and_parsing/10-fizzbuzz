@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# multiples of 3, 5, 15
+max=100
+iter=1
+
+until [[ $iter -gt $max ]]; do
+	if [[ $((iter % 15)) == 0 ]]; then
+		echo "FizzBuzz"
+	elif [[ $((iter % 3)) == 0 ]]; then
+		echo "Fizz"
+	elif [[ $((iter % 5)) == 0 ]]; then
+		echo "Buzz"
+	else
+		echo $iter
+	fi
+	((iter++))
+done
