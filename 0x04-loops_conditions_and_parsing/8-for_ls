@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# printing files correctly
+for files in $(find . -type f -printf "%f\n" | cut -d"-" -f2 -); do
+	echo "$files"
+done
