@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-i=0
-while [[ $i -ne 10 ]]; do
-	echo "Best School"
-	((i++))
-done
