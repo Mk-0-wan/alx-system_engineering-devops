@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# trapping SIGTERM signals from the user while the program is running
+trap "echo I am invincible!!!" SIGTERM
+until false ; do
+	echo "To infinity and beyond"
+	sleep 2
+done
