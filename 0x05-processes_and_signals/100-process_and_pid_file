@@ -3,11 +3,13 @@
 handler() {
 	# generate a file containing the pid of this file
 	pgrep -fo "100-process_and_pid_file" > /var/run/myscript.pid
-	if [[ $1 == "SIGTERM" || $1 == "SIGQUIT" ]]; then
+	if [[ $1 == "SIGTERM" ]]; then
 		echo "I hate the kill command"
 		rm /var/run/myscript.pid
 	elif [[ $1 == "SIGINT" ]]; then
 		echo "Y U no love me?!"
+	elif [[ $1 == "SIGQUIT" ]]; then
+		rm /var/run/myscript.pid
 	fi
 	exit
 }
