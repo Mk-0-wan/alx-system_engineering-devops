@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# getting the pid of a process from another terminal
+proc=$( pgrep -fo ./4-to_infinity_and_beyond )
+kill "$proc"
