@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# using pkill to send type of signal to a process
+pkill -SIGKILL -fo "./7-highlander"
+# there is a walk around proc=$(pgrep -fo "<filename>")
+# kill -9 "$proc"
