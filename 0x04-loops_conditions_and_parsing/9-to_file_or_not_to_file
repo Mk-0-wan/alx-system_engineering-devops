@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # printing file status
-file=$(find . -name school | cut -d"/" -f2)
-
+file="school"
 if [[ -e $file ]]; then
 	echo "$file file exists"
 	if [[ -s $file ]]; then
