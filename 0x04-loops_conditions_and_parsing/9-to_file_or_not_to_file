@@ -2,7 +2,7 @@
 # printing file status
 file=$(find . -name school | cut -d"/" -f2)
 
-if [[ -e $file ]] || [[ -d $file ]]; then
+if [[ -e $file ]]; then
 	echo "$file file exists"
 	if [[ -s $file ]]; then
 		echo "$file file is not empty"
