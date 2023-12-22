@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# c format of handling signals
+handler() {
+	# generate a file containing the pid of this file
+	pgrep -fo "100-process_and_pid_file" > /var/run/myscript.pid
+	if [[ $1 == "SIGTERM" || $1 == "SIGQUIT" ]]; then
+		echo "I hate the kill command"
+		rm /var/run/myscript.pid
+	elif [[ $1 == "SIGINT" ]]; then
+		echo "Y U no love me?!"
+	fi
+	exit
+}
+
+trap 'handler "SIGTERM"' SIGTERM
+trap 'handler "SIGINT"' SIGINT
+trap 'handler "SIGQUIT"' SIGQUIT
+
+until false; do
+	echo "To infinity and beyond"
+	sleep 2
+done
