@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# getting the pid of a process from another terminal and killing it without kill command
+pkill -fo "4-to_infinity_and_beyond"
