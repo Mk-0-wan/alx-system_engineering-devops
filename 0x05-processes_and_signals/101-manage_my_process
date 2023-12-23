@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# acts like the systemctl bash command by managing  manage_my_process file
+# The file takes arguments
+handler_start()
+{
+	./manage_my_process &
+	pgrep -fo "manage_my_process" > /var/run/my_process.pid
+	printf "manage_my_process %s\n" "$1"
+}
+
+handler_stop()
+{
+	pkill -fo "./manage_my_process"
+	rm /var/run/my_process.pid
+	rm /tmp/my_process
+	if [ $# -gt 0 ]; then
+		printf "manage_my_process %s\n" "$1"
+	fi
+}
+
+if [[ $1 == "start" ]]; then
+	handler_start "started"
+elif [[ $1 == "stop" ]]; then
+	handler_stop "stopped"
+elif [[ $1 == "restart" ]]; then
+	# stopping
+	handler_stop
+	# starting
+	handler_start "restarted"
+else
+	printf "Usage: manage_my_process {start|stop|restart}\n"
+fi
+exit
