@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# changing the localhost IP on your personal computer
+cat ./host.new > /etc/hosts

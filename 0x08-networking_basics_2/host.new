@@ -1,0 +1,8 @@
+# same as the normal local host file just with a few mods
+# we are going to change the ip of the local host to a new one
+# also change the ip of a facebook.com to another moded ip
+# have to be carefull for these might crash and making alot of stuff go
+# really bad our you comp have it configured right after running this script
+
+127.0.0.2	localhost
+8.8.8.8 	facebook.com

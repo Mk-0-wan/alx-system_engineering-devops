@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# simple telnet and netcat in action of making a simple server connection
+nc -l localhost 98
