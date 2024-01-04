@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# pinging ip to see of the connenction is still live
+IP=$1
+if [[ -z $IP ]]; then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+	ping -w 5 "$IP"
+fi

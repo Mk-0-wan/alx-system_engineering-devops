@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Displaying network status for all the listening sockets
+netstat -lp
