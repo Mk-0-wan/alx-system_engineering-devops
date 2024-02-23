@@ -1,3 +1,4 @@
+# creates a school file in the temp folder
 node default {
 file { '/tmp/school' :
 ensure  => file,
