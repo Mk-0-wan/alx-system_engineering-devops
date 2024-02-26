@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 # generating an ssh-key pair
-ssh -t rsa -b 4096 -f school -N betty 
+ private_key_name="school"
+
+#number of bits for the rsa_key
+n_bits=4096
+
+#passphrase
+passphrase="betty"
+
+ssh-keygen -t rsa -b $n_bits -f "$private_key_name" -N "$passphrase"
