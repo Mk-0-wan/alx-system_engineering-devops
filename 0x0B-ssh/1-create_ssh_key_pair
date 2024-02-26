@@ -8,4 +8,4 @@ n_bits=4096
 #passphrase
 passphrase="betty"
 
-ssh -t rsa -b $n_bits -f $private_key_name -N $passphrase
+ssh -t rsa -b $n_bits -f "$private_key_name" -N "$passphrase"
