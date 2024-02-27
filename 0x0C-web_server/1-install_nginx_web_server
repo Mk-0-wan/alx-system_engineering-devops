@@ -8,7 +8,7 @@ apt-get update
 apt-get -y install nginx
 
 # if not yet installed get the linux firewall running on your system
-apt-get ufw
+apt-get -y install ufw 
 ufw enable
 
 # allow transfer of both unencrypeted(HTTP) through port 80 and also encrypted(HTTPS) through port 443
@@ -21,4 +21,3 @@ echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 # reloading the nginx with the reload option passed
 nginx -s reload
-
