@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Installing nginx webserver on the remote server
+
+# make sure that the systme is updated
+apt-get update
+
+# install nginx using the -y --yes option
+apt-get -y install nginx
+
+# if not yet installed get the linux firewall running on your system
+apt-get ufw
+
+# allow transfer of both unencrypeted(HTTP) through port 80 and also encrypted(HTTPS) through port 443
+# encrypted include (TLS/SSL encrypted traffic)
+ufw allow 'Nginx HTTP'
+
+# let configure the html file so that we can be able to return the phrase 'Hello World!'
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# reloading the nginx with the reload option passed
+nginx -s reload
+
