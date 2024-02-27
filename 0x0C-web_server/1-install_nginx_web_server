@@ -8,7 +8,11 @@ apt-get update
 apt-get -y install nginx
 
 # let configure the html file so that we can be able to return the phrase 'Hello World!'
-echo "Hello World!" > /usr/share/nginx/html/index.html
+chmod 777 /var/www/html/index.html
+
+echo "Hello World!" > /var/www/html/index.html
+
+chmod 644 /var/www/html/index.html
 
 # reloading the nginx with the reload option passed
 /etc/init.d/nginx restart
