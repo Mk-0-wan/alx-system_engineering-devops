@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Transferring files from a local machine to a remote server using scp
+
+# some global variable
+PATH_TO_FILE="$1"
+IP="$2"
+USERNAME="$3"
+PATH_TO_SSH_KEY="$4"
+
+# check for valid number of command line arguments
+if [[ $# -le 3 ]];
+then
+	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+else
+	scp -o 'StrictHostKeyChecking=off' -o "IdentityFile=$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME"@"$IP":~/
+fi
