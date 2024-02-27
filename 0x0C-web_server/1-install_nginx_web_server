@@ -10,7 +10,7 @@ apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 
 # let configure the html file so that we can be able to return the phrase 'Hello World!'
-echo "Hello World!" > /var/www/html/index.nginx-debain.html
+echo "Hello World!" > /var/www/html/index.html
 
 # reloading the nginx with the reload option passed
 service nginx restart
