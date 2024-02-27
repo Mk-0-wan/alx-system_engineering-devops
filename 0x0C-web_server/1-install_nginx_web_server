@@ -7,17 +7,8 @@ apt-get update
 # install nginx using the -y --yes option
 apt-get -y install nginx
 
-# if not yet installed get the linux firewall running on your system
-apt-get -y install ufw 
-ufw enable
-
-# allow transfer of both unencrypeted(HTTP) through port 80 and also encrypted(HTTPS) through port 443
-# encrypted include (TLS/SSL encrypted traffic)
-ufw allow ssh
-ufw allow 'Nginx HTTP'
-
 # let configure the html file so that we can be able to return the phrase 'Hello World!'
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.html
 
 # reloading the nginx with the reload option passed
-nginx -s reload
+/etc/init.d restart
