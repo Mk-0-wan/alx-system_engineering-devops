@@ -1,4 +1,4 @@
-Host *
+Host school
 	HostName 3.85.196.185
 	User ubuntu
 	IdentityFile ~/.ssh/school
