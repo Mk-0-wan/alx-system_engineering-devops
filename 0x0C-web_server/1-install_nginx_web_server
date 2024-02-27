@@ -15,4 +15,4 @@ echo "Hello World!" > /var/www/html/index.html
 chmod 644 /var/www/html/index.html
 
 # reloading the nginx with the reload option passed
-/etc/init.d/nginx restart
+service nginx restart
