@@ -1,16 +1,7 @@
 #!/usr/bin/env bash
-# Installing nginx webserver on the remote server
-
-# make sure that the systme is updated
-apt-get update
-
-# install nginx using the -y --yes option
-apt-get install nginx -y
-
+# installing nginx 
+apt update
+apt install nginx -y
 ufw allow 'Nginx HTTP'
-
-# let configure the html file so that we can be able to return the phrase 'Hello World!'
-echo "Hello World!" > /var/www/html/index.html
-
-# reloading the nginx with the reload option passed
+echo 'Hello World!' > /var/www/html/index.html
 service nginx restart
