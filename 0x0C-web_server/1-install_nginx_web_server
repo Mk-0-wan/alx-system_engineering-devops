@@ -1,19 +1,6 @@
 #!/usr/bin/env bash
-# Installing nginx webserver on the remote server
-
-# make sure that the systme is updated
-sudo apt-get -y update
-
-# install nginx using the -y --yes option
+# install nginx web server
 sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 
-# let configure the html file so that we can be able to return the phrase 'Hello World!'
-sudo touch /var/www/html/index.html
-sudo chmod 777 /var/www/html/index.html
-
-echo "Hello World!" > /var/www/html/index.html
-
-sudo chmod 644 /var/www/html/index.html
-
-# reloading the nginx with the reload option passed
-sudo service nginx restart
+service nginx start
