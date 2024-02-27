@@ -11,4 +11,4 @@ apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.html
 
 # reloading the nginx with the reload option passed
-/etc/init.d restart
+/etc/init.d/nginx restart
