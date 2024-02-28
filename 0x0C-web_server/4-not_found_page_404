@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # ufw allow 'Nginx HTTP'
+apt-get update -y
+apt-get install nginx -y
 
 echo 'Hello World!' > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
-cat << EOF > /etc/nginx/sites-available/default
-server {
+echo "server {
 
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -31,7 +32,6 @@ server {
                 internal;
         }
 
-}
-EOF
+}" > /etc/nginx/sites-enabled/default
 
 service nginx restart
