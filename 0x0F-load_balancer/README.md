@@ -1,11 +1,11 @@
 # HAProxy
 [![N|HAProxy](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-## Algorithims that allow you to make the backend logic
+## Backend Logic (Networking) && (Load balancing)
 ---
 The huge determinant that allow you to the difference between frontend logic work from backend.
+
 Frontend anything infront of the HAProxy:
 
 - Timeout : Kill all the TCP connection that allow communication between the client and the server if client is idle.
