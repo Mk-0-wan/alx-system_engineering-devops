@@ -3,7 +3,7 @@
 
 
 ## Backend Logic (Networking) && (Load balancing)
----
+
 The huge determinant that allow you to the difference between frontend logic work from backend.
 
 Frontend anything infront of the HAProxy:
@@ -73,9 +73,9 @@ Due to this an intermidiary breaks the tunnel between a client and the server in
 - Bridging: combination of the two types of connection.
 
 ##### Offloading
-Proxy server recieves the encrypted data from the client's side and starts to decrypt it.
-Data is analyzide and managed. Then sent to the proxy server
-Encryption then starts in order to return it to the client side
+Proxy server recieves the encrypted data from the client's side and starts to decrypt it.<br>
+Data is analyzide and managed. Then sent to the proxy server.<br>
+Encryption then starts in order to return it to the client side.<br>
 Works is pretty efficient methods and allow lees load to be pushed to the server.
 Proxy server needs to get the same CA as the one the server has.
 All servers need to prove it is trusted in order to start a handshake( a TLS connection is established )
@@ -89,13 +89,16 @@ A combination of the two connection.
 
 
 #### TLS Passthrough Proxy
-its passive all the encryption and decryption is done at the end-points.
-Only used for loadbalancing purposes
-Secure since Protocal defined is used all through out the connection and not connection is lost between the server and client.
-Only bottleneck it's deem costly.
+Its passive all the encryption and decryption is done at the end-points.
+
+Only used for loadbalancing purposes.
+
+So secure since all the connection between the client and the server is never lost. All these is done under the HTTPS protocal
+
+Only bottleneck it's a costly process.
 
 
-## How to configure HAProxy file
+## HAProxy Config Syntax
 -----
 - Using the round robbin algorithm
 ```cfg
