@@ -1,5 +1,6 @@
-#!/usr/bin/evn bash
+#!/usr/bin/env bash
 # Adding custom headers to a server
+
 hostName=$(hostname)
 id=307078
 
