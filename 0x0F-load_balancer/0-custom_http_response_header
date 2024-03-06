@@ -1,0 +1,56 @@
+#!/usr/bin/evn bash
+# Adding custom headers to a server
+hostName=$(hostname)
+id=307078
+
+#---------------------------#
+#   HostName Server Setup
+#---------------------------#
+# checking if hostname is correct
+if [[ "$hostName" =~ ^$id-web[0-9]+ ]];
+then
+	echo "Host name is correct"
+else
+	(>&2 echo "Failed: Bad hostname")
+	(>&2 echo "Fix Avaliable: sudo hostnamectl set-hostname $id-web-<server_id>")
+fi
+
+#---------------------------#
+#    Server NGINX Setup
+#---------------------------#
+apt-get update -y
+apt-get install nginx -y
+
+echo 'Hello World!' > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+print %s "server {
+
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+    # added a custom header
+    add_header X-Served-By $hostName
+
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+    error_page 404 /404.html;
+        location = /404.html {
+        root /var/www/html;
+                internal;
+        }
+
+}" > /etc/nginx/sites-enabled/default
+
+# still not running yet fire up nginx with the new configs
+service nginx start
+
+# alereay running you will need a restart to reload all the new configuration
+service nginx restart
