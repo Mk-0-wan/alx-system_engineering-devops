@@ -4,16 +4,12 @@
 hostName=$(hostname)
 id=307078
 
-#---------------------------#
-#   HostName Server Setup
-#---------------------------#
 # checking if hostname is correct
-if [[ "$hostName" =~ ^$id-web[0-9]+ ]];
+if [[ ! "$hostName" =~ ^$id-web-[0-9]+ ]];
 then
-	echo "Host name is correct"
-else
 	(>&2 echo "Failed: Bad hostname")
-	(>&2 echo "Fix Avaliable: sudo hostnamectl set-hostname $id-web-<server_id>")
+	(>&2 echo "Run: hostnamectl set-hostname $id-web-<server_id>")
+	exit
 fi
 
 #---------------------------#
@@ -25,7 +21,7 @@ apt-get install nginx -y
 echo 'Hello World!' > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
-print %s "server {
+printf %s "server {
 
     listen 80 default_server;
     listen [::]:80 default_server;
