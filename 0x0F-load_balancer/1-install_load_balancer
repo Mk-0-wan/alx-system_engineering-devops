@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Installing HAProxy and configuring it on a new machine
+
+# update and install new HAProxy
+[[ ! $(dpkg-query --show haproxy) ]] > /dev/null 2>&1 && apt update && apt-get install haproxy -y
+
+
+HAProxyFile=/etc/haproxy/haproxy.cfg
+HAProxyConfig="
+frontend clientSideRequest
+	bind *:80
+	default_backend  backEndServers
+
+backend backEndServers
+	balance roundrobin # runs by default
+	option forwardfor
+	http-request set-header X-Forwarded-Port %[dst_port]
+	server 307078-web-01 54.197.44.154
+	server 307078-web-02 54.223.212.226"
+
+if test "$(grep --only-matching "$HAProxyConfig" $HAProxyFile | wc -l)" != 0;
+then
+	# proxy is already set
+	service haproxy restart
+else
+
+	# proxy is already set make the changes take effect
+	echo "$HAProxyConfig" >> $HAProxyFile
+	service start haproxy
+fi
