@@ -8,7 +8,7 @@ file {'/var/www/html/index.html':
 }
 
 file {'/var/www/html/404.html':
-	content => 'Ceci n'est pas une page'
+	content => "Ceci n'est pas une page"
 }
 
 exec {'add_custom_header':
