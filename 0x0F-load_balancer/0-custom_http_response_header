@@ -9,17 +9,16 @@ if [[ ! "$hostName" =~ ^$id-web-[0-9]+ ]];
 then
 	(>&2 echo "Failed: Bad hostname")
 	(>&2 echo "Run: hostnamectl set-hostname $id-web-<server_id>")
-	exit
 fi
 
 #---------------------------#
 #    Server NGINX Setup
 #---------------------------#
-apt-get update -y
-apt-get install nginx -y
+sudo apt-get update -y
+sudo apt-get install nginx -y
 
-echo 'Hello World!' > /var/www/html/index.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo 'Hello World!' | sudo tee /var/www/html/index.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 printf %s "server {
 
@@ -44,10 +43,10 @@ printf %s "server {
                 internal;
         }
 
-}" > /etc/nginx/sites-enabled/default
+}" | sudo tee /etc/nginx/sites-enabled/default
 
 # still not running yet fire up nginx with the new configs
-service nginx start
+sudo service nginx start
 
 # alereay running you will need a restart to reload all the new configuration
-service nginx restart
+sudo service nginx restart
