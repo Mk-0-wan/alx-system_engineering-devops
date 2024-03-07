@@ -16,7 +16,7 @@ backend backEndServers
 	option forwardfor
 	http-request set-header X-Forwarded-Port %[dst_port]
 	server 307078-web-01 54.197.44.154
-	server 307078-web-02 54.223.212.226"
+	server 307078-web-02 52.23.212.226"
 
 if test "$(grep --only-matching "$HAProxyConfig" $HAProxyFile | wc -l)" != 0;
 then
@@ -26,5 +26,5 @@ else
 
 	# proxy is already set make the changes take effect
 	echo "$HAProxyConfig" >> $HAProxyFile
-	service start haproxy
+	service haproxy start
 fi
