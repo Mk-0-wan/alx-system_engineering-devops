@@ -38,13 +38,13 @@ frontend clientSideRequest
         bind *:443 ssl crt /etc/ssl/private/haproxy_certbot.pem
         reqadd X-Forwarded-Proto:\ https
 
-        acl is_root path -i /
+        acl is_root path_beg /.well-known/acme-challange/
         use_backend localHost if is_root
 
         default_backend  backEndServers
 
 backend localHost
-        server localHost 127.0.0.1:8888
+        server letsencrypt 127.0.0.1:8888
 
 backend backEndServers
         balance roundrobin # runs by default
