@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# grabbing the A records of the domain
+domainlist=(
+	"www.mk-devops.tech"
+	"lb-01.mk-devops.tech"
+	"web-01.mk-devops.tech"
+	"web-02.mk-devops.tech"
+	)
+
+dig_detailed_digger() {
+    if [[ -n "$1" ]]; then
+        local result
+	local subdomain
+        local domain="$1"
+	local recordtype
+	local destination
+        local specified_subdomain="$2"
+
+        for i in "${domainlist[@]}"; do
+	    result=$(dig "$i" | awk -v domain="$domain" '$1 ~ /^[^;]*\./ && $1 ~ domain { print $1, $4, $5 }')
+
+            if [[ -n "$result" ]]; then
+                subdomain=$(echo "$result" | awk '{print $1}' | cut -d'.' -f1)
+                recordtype=$(echo "$result" | awk '{print $2}')
+                destination=$(echo "$result" | awk '{print $3}')
+
+                if [[ -z "$specified_subdomain" || "$specified_subdomain" == "$subdomain" ]]; then
+			echo "The subdomain $subdomain is a $recordtype record and points to $destination"
+                fi
+            fi
+        done
+    else
+	    (2>&1 echo "No domain specified.")
+        exit
+    fi
+}
+
+# Example usage
+dig_detailed_digger "$1" "$2"
+
