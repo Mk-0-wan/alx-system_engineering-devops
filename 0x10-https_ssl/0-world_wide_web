@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # grabbing the A records of the domain
+DOMAIN="$1"
 domainlist=(
-	"www.mk-devops.tech"
-	"lb-01.mk-devops.tech"
-	"web-01.mk-devops.tech"
-	"web-02.mk-devops.tech"
+	"www.$DOMAIN"
+	"lb-01.$DOMAIN"
+	"web-01.$DOMAIN"
+	"web-02.$DOMAIN"
 	)
 
 dig_detailed_digger() {
-    if [[ -n "$1" ]]; then
+    if [[ -n "$1" && "$1" == "$DOMAIN" ]]; then
         local result
 	local subdomain
         local domain="$1"
