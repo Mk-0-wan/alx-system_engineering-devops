@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# another line
+ln -s -f /usr/sbin/nginx /bin/nginx
+service nginx stop
+echo " * nginx is not running"
