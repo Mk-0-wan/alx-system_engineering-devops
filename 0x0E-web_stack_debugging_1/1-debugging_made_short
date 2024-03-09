@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # another line
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-service nginx restart
-pkill -f nginx
+sudo service nginx restart
+sudo pkill -f nginx
