@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # somone just messed up with the symbolic link fixing that
-sudo ln -s -f /usr/sbin/nginx /bin/nginx 
+suln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo service nginx start
