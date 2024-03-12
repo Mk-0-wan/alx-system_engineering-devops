@@ -1,19 +1,19 @@
 # using puppet to set up the new header content
 exec { 'apt_update':
-	command => 'usr/bin/apt-get update'
+	command => 'usr/bin/apt-get update',
 }
 
 package {'nginx':
-	ensure  => installed
-	require => Exec['apt_update']
+	ensure  => installed,
+	require => Exec['apt_update'],
 }
 
 file {'/var/www/html/index.html':
-	content => 'Hello World'
+	content => 'Hello World',
 }
 
 file {'/var/www/html/404.html':
-	content => "Ceci n'est pas une page"
+	content => "Ceci n'est pas une page",
 }
 
 exec {'add_custom_header':
