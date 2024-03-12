@@ -2,4 +2,4 @@
 # another line
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo service nginx restart
-sudo pkill -9 -f "nginx"
+sudo kill "$(pgrep 'nginx' | head -1)"
