@@ -1,31 +1,34 @@
 # using puppet to set up the new header content
 exec { 'apt_update':
-	command => 'usr/bin/apt-get update',
+        command => '/usr/bin/apt-get update',
+        path    => '/usr/bin',
 }
 
 package {'nginx':
-	ensure  => installed,
-	require => Exec['apt_update'],
+        ensure  => 'installed',
+        require => Exec['apt_update'],
 }
 
 file {'/var/www/html/index.html':
-	content => 'Hello World',
+        content => 'Hello World',
 }
 
 file {'/var/www/html/404.html':
-	content => "Ceci n'est pas une page",
+        content => "Ceci n'est pas une page",
 }
 
 exec {'add_custom_header':
-    command => 'sed -i "23i \\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
-    path    => '/bin:/usr/bin/',
-    unless  => 'grep -qE "^\s*add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
-    notify  => Service['nginx'],
+        command => "sed -i '23i \\\tadd_header X-Served-By \${hostname};' /etc/nginx/sites-available/default",
+        path    => '/bin:/usr/bin/',
+        unless  => 'grep -qE "^\s*add_header X-Served-By \${hostname};" /etc/nginx/sites-available/default',
+        notify  => Service['nginx'],
+        require => Package['nginx'],
+
 }
 
 service {'nginx':
-	ensure    => running,
-	enable    => true,
-	require   => Package['nginx'],
-	subscribe => Exec['add_custom_header'],
+        ensure    => 'running',
+        enable    => true,
+        require   => Package['nginx'],
+        subscribe => Exec['add_custom_header'],
 }
