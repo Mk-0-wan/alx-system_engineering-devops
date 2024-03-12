@@ -12,10 +12,10 @@ file {'/var/www/html/404.html':
 }
 
 exec {'add_custom_header':
-	command => 'sed -i "23i \\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
-	path    => '/bin:/usr/bin/',
-	unless  => 'test ! -z "$(grep -E "^\s*add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default)"',
-	notify  => Service['nginx'],
+    command => 'sed -i "23i \\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+    path    => '/bin:/usr/bin/',
+    unless  => 'grep -qE "^\s*add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+    notify  => Service['nginx'],
 }
 
 service {'nginx':
