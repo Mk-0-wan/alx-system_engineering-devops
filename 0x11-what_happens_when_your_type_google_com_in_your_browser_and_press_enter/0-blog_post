@@ -1,0 +1,29 @@
+DNS Lookup: The browser first needs to translate the human-readable domain name "google.com" into an IP address that the computer can understand. It does this by sending a Domain Name System (DNS) query to a DNS server. The DNS server responds with the IP address associated with "google.com".
+
+TCP Handshake: Once the browser knows the IP address, it establishes a TCP (Transmission Control Protocol) connection with the server at that IP address. This involves a three-way handshake where the browser and the server exchange packets to set up the connection.
+
+HTTP Request: After the TCP connection is established, the browser sends an HTTP (Hypertext Transfer Protocol) request to the server. This request includes information like the specific resource being requested (in this case, the home page of Google), any headers, and other metadata.
+
+Server Processing: The server receives the HTTP request and processes it. In the case of "google.com", the server might generate an HTML response dynamically or retrieve a pre-generated HTML file. It may also interact with other services or databases to fulfill the request.
+
+HTTP Response: Once the server has processed the request, it sends back an HTTP response to the browser. This response includes the requested resource (the HTML content of the Google homepage), along with metadata such as the HTTP status code, headers, and more.
+
+Rendering: The browser receives the HTTP response and begins to render the content. It parses the HTML, executes any embedded scripts (such as JavaScript), fetches additional resources like CSS stylesheets and images, and lays out the content on the screen.
+
+User Interaction: Finally, the user can interact with the rendered webpage, clicking on links, filling out forms, or performing other actions.
+
+This process, known as the client-server model, forms the backbone of how the World Wide Web operates, allowing users to access and interact with websites hosted on remote servers.
+
+An application server is a software framework that provides a runtime environment for executing applications. It typically sits between the client-side application (such as a web browser or mobile app) and the backend database or other resources. Here's what an application server does:
+
+Execution Environment: Application servers provide a runtime environment where applications written in various programming languages (such as Java, .NET, Python, etc.) can run. They manage the execution of application code, handling tasks like memory management, thread management, and resource allocation.
+
+Middleware Services: Application servers often include middleware services that simplify the development of complex applications. These services may include components for transaction management, messaging, security, caching, and more. By providing these services, application servers allow developers to focus on writing business logic rather than dealing with low-level infrastructure concerns.
+
+Connection Management: Application servers manage connections between client applications and backend resources such as databases, messaging systems, or other services. They handle tasks like connection pooling, load balancing, and failover to ensure reliable and efficient communication between components.
+
+Scalability and Load Balancing: Application servers often support clustering and load balancing capabilities to handle large numbers of concurrent requests. They can distribute incoming requests across multiple server instances to ensure optimal performance and scalability.
+
+Security: Application servers typically include features for securing applications and data. This may include authentication, authorization, encryption, and other security mechanisms to protect sensitive information and prevent unauthorized access.
+
+Deployment and Management: Application servers provide tools for deploying, configuring, and managing applications. This includes features for version control, deployment automation, monitoring, logging, and performance tuning.
