@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# steps to make sure that all the firewall is configured well.
+# make sure that everthing is upto date
+# check if the package ufw is installed
+[[ ! $(dpkg-query -W ufw) ]] > /dev/null 2>&1
+sudo apt install ufw -y
+sudo apt-get update -y
+
+
+# setting all the default configuration
+sudo ufw reset
+
+# Disabling all the incoming traffic
+sudo ufw default deny incoming
+
+# Allowing outgoing traffic
+sudo ufw default allow outgoing
+
+# Quckly allowing ssh connection so that we are able to access the server
+sudo ufw allow ssh
+
+# some other required traffic to allow
+sudo ufw allow https    # allowing secure http request
+sudo ufw allow http     # allow unencrypted data transfer
+
+# show all the added Rules
+sudo ufw status
+
+# enable the firewall
+sudo ufw enable
+
+# allowing port forwarding
+# /etc/ufw/before.rules
+sudo sed -i '10i *nat\n:PREROUTING ACCEPT [0:0]\n-A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080\nCOMMIT\n' /etc/ufw/before.rules
+
+# reload the firewall
+sudo ufw reload
