@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# making a similar script as whoami
+lstUsers=$(users)
+found=false
+
+for usr in $lstUsers; do
+    if [[ "$1" == "$usr" ]]; then
+        echo "$usr"
+        found=true
+        break  # Exit the loop once a match is found
+    fi
+done
+
+if [[ "$found" == false ]]; then
+    echo "No Matching user found"
+fi
