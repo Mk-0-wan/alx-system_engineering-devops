@@ -5,7 +5,7 @@ found=false
 
 for usr in $lstUsers; do
     if [[ "$1" == "$usr" ]]; then
-        echo "$usr"
+        sudo -u "$usr" whoami
         found=true
         break  # Exit the loop once a match is found
     fi
