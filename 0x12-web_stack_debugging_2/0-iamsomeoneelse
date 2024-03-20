@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 # making a similar script as whoami
-lstUsers=$(users)
+#!/bin/bash
+
 found=false
 
-for usr in $lstUsers; do
-    if [[ "$1" == "$usr" ]]; then
-        sudo -u "$usr" whoami
+while IFS= read -r line; do
+    if [[ "$1" == "$line" ]]; then
+        echo "Found a Matching user: $line"
         found=true
-        break  # Exit the loop once a match is found
+        break
     fi
-done
+done < <(who)
 
 if [[ "$found" == false ]]; then
-    echo "No Matching user found" > /dev/null
+    echo "No Matching user found"
 fi
