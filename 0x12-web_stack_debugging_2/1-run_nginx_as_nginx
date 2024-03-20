@@ -9,7 +9,8 @@ sudo sed '/user www-data/ c\user nginx' /etc/nginx/nginx.conf
 sudo sed  -i 's/80/8080;' /etc/nginx/sites-enabled/default
 
 # kill all apache servies listening on port 8080
-sudo kill "$(pgrep 'apache' | head -1)"
+service apache2 stop
+pkill apache2
 
 # restart nginx
-sudo -u nginx systemctl restart nginx
+sudo -u nginx service nginx restart
