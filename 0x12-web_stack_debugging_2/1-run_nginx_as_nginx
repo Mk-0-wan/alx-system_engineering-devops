@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# fixing the new user to run nginx
+
+# this will happen after the user nginx is created
+#
+# sed -i "19i User=nginx\nGroup=nginx" /etc/systemd/system/nginx.service
+sudo sed '/\[Sevice\]/ \a User=nginx\
+	Group=nginx' /etc/systemd/system/nginx.service
+
+# allow the system to update the changes made
+sudo systemctl daemon-reload
+
+# restart nginx to support the new user taking over the service
+sudo systemctl restart nginx
+
+# configure nginx.conf to support nginx as the user in control
+sudo sed '/user www-data/ c\user nginx' 
+
+# configuring sites-enabled/defaults to allow connection from port 8080
+sudo sed '/server/ a\listen 8080;'
+
+# restart nginx
+sudo systemctl restart nginx
