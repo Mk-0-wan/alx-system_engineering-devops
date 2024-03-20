@@ -12,5 +12,5 @@ for usr in $lstUsers; do
 done
 
 if [[ "$found" == false ]]; then
-    echo "No Matching user found"
+    echo "No Matching user found" > /dev/null
 fi
