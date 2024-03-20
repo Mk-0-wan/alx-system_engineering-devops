@@ -3,10 +3,10 @@
 sudo chmod 6400 /etc/nginx/nginx.conf
 
 # configure nginx.conf to support nginx as the user in control
-sudo sed '/user www-data/ c\user nginx' 
+sudo sed '/user www-data/ c\user nginx' /etc/nginx/nginx.conf
 
 # configuring sites-enabled/defaults to allow connection from port 8080
-sudo sed  -i 's/80/8080;'
+sudo sed  -i 's/80/8080;' /etc/nginx/sites-enabled/default
 
 # kill all apache servies listening on port 8080
 sudo kill "$(pgrep 'apache' | head -1)"
