@@ -1,17 +1,3 @@
 #!/usr/bin/env bash
 # making a similar script as whoami
-#!/bin/bash
-
-found=false
-
-while IFS= read -r line; do
-    if [[ "$1" == "$line" ]]; then
-        echo "Found a Matching user: $line"
-        found=true
-        break
-    fi
-done < <(who)
-
-if [[ "$found" == false ]]; then
-    echo "No Matching user found"
-fi
+sudo -u "$1" whoami
